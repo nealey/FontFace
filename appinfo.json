@@ -1,0 +1,33 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "dartcatcher@gmail.com",
+    "longName": "Helvetica",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "characterRegex": "[0-9A-Za-z ]",
+                "file": "fonts/helveticaneue.ttf",
+                "name": "HELVETICA_R_28",
+                "type": "font"
+            },
+            {
+                "characterRegex": "[0-9:]",
+                "file": "fonts/HelveticaNeue-Bold.ttf",
+                "name": "HELVETICA_B_48",
+                "type": "font"
+            }
+        ]
+    },
+    "sdkVersion": "2",
+    "shortName": "Helvetica",
+    "uuid": "534e5853-7be7-447e-a67d-b236ac9f4f51",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
