@@ -28,7 +28,7 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
 
   char *time_format;
   if (clock_is_24h_style()) {
-    time_format = "%k:%M";
+    time_format = "%R";
   } else {
     time_format = "%l:%M";
   }
@@ -38,7 +38,7 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
   if (!clock_is_24h_style() && (s_time_text[0] == '0')) {
     memmove(s_time_text, &s_time_text[1], sizeof(s_time_text) - 1);
   }
-  if (s_time_text[0] == ' ') {
+  if (s_time_text[0] == '0') {
     text_layer_set_text(s_time_layer, s_time_text + 1);
   } else {
     text_layer_set_text(s_time_layer, s_time_text);
