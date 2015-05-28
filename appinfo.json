@@ -9,7 +9,7 @@
     "resources": {
         "media": [
             {
-                "characterRegex": "[0-9A-Za-z ]",
+                "characterRegex": "[0-9A-Za-zéô ]",
                 "file": "fonts/helveticaneue.ttf",
                 "name": "HELVETICA_R_28",
                 "type": "font"
