@@ -10,7 +10,7 @@
         "media": [
             {
                 "characterRegex": "[0-9A-Za-zéô ]",
-                "file": "fonts/helveticaneue.ttf",
+                "file": "fonts/HelveticaNeue-Regular.ttf",
                 "name": "HELVETICA_R_28",
                 "type": "font"
             },
