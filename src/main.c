@@ -50,13 +50,13 @@ static void main_window_load(Window *window) {
   s_date_layer = text_layer_create(GRect(8, 66, 136, 100));
   text_layer_set_text_color(s_date_layer, FG);
   text_layer_set_background_color(s_date_layer, GColorClear);
-  text_layer_set_font(s_date_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_HELVETICA_R_28)));
+  text_layer_set_font(s_date_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_R_28)));
   layer_add_child(window_layer, text_layer_get_layer(s_date_layer));
 
   s_time_layer = text_layer_create(GRect(7, 92, 137, 76));
   text_layer_set_text_color(s_time_layer, FG);
   text_layer_set_background_color(s_time_layer, GColorClear);
-  text_layer_set_font(s_time_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_HELVETICA_B_48)));
+  text_layer_set_font(s_time_layer, fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_B_48)));
   layer_add_child(window_layer, text_layer_get_layer(s_time_layer));
 }
 
