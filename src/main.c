@@ -1,13 +1,9 @@
+#include "pebble_process_info.h"
 #include "pebble.h"
 
-#define WHITE
-#ifdef WHITE
-#define BG GColorWhite
-#define FG GColorBlack
-#else
-#define BG GColorBlack
-#define FG GColorWhite
-#endif
+extern const PebbleProcessInfo __pbl_app_info;
+
+GColor BG, FG;
  
 static Window *s_main_window;
 static TextLayer *s_date_layer, *s_time_layer;
@@ -23,8 +19,14 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
   static char s_time_text[] = "00:00";
   static char s_date_text[] = "Xxxxxxxxx 00";
 
-  strftime(s_date_text, sizeof(s_date_text), "%e %b", tick_time);
-  text_layer_set_text(s_date_layer, s_date_text);
+  char *p;
+
+  strftime(s_date_text, sizeof(s_date_text), "%d %b", tick_time);
+  p = s_date_text;
+  while (*p == '0') {
+  	p++;
+  }
+  text_layer_set_text(s_date_layer, p);
 
   char *time_format;
   if (clock_is_24h_style()) {
@@ -34,15 +36,12 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
   }
   strftime(s_time_text, sizeof(s_time_text), time_format, tick_time);
 
-  // Handle lack of non-padded hour format string for twelve hour clock.
-  if (!clock_is_24h_style() && (s_time_text[0] == '0')) {
-    memmove(s_time_text, &s_time_text[1], sizeof(s_time_text) - 1);
+  // I always remove leading zero, because I arbitrarily think that looks better.
+  p = s_time_text;
+  while (*p == '0') {
+  	p++;
   }
-  if (s_time_text[0] == '0') {
-    text_layer_set_text(s_time_layer, s_time_text + 1);
-  } else {
-    text_layer_set_text(s_time_layer, s_time_text);
-  }
+  text_layer_set_text(s_time_layer, p);
 }
 
 static void main_window_load(Window *window) {
@@ -69,6 +68,15 @@ static void main_window_unload(Window *window) {
 }
 
 static void init() {
+  // First things first: are we black or white?
+  if (__pbl_app_info.uuid.byte15 % 2) {
+  	BG = GColorBlack;
+	FG = GColorWhite;
+  } else {
+	BG = GColorWhite;
+  	FG = GColorBlack;
+  }
+
   s_main_window = window_create();
   window_set_background_color(s_main_window, BG);
   window_set_window_handlers(s_main_window, (WindowHandlers) {
