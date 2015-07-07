@@ -3,15 +3,19 @@
 echo PATH=$PATH:$HOME/pebble-dev/PebbleSDK-3.1/bin
 cd $(dirname $0)
 
+mkdir -p pbw
+
 build () {
     font=$1
     color=$2
     uuid=$3
     name=${font}Face-$color
+    tgt=pbw/$name.pbw
+    
     sed "s/%COLOR/$color/;s/%FONT/$font/;s/%UUID/$uuid/" appinfo.json.tmpl > appinfo.json
     pebble build
-    cp build/FontFace.pbw $name.pbw
-    echo $name.pbw
+    cp build/FontFace.pbw $tgt
+    echo $tgt
 }
 
 if [ -n "$1" ]; then
