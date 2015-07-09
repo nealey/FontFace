@@ -32,7 +32,7 @@ static void handle_minute_tick(struct tm *tick_time, TimeUnits units_changed) {
   if (clock_is_24h_style()) {
     time_format = "%R";
   } else {
-    time_format = "%l:%M";
+    time_format = "%I:%M";
   }
   strftime(s_time_text, sizeof(s_time_text), time_format, tick_time);
 

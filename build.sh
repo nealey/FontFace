@@ -35,5 +35,7 @@ AveriaSerifLibre White e03bd7a7-a8a5-4584-98aa-44496d74d766
 AveriaSerifLibre Black e03bd7a7-a8a5-4584-98aa-44496d74d767
 ExpletusSans White 4ba792cf-26c4-4c3a-a194-4db5ae7e4be8
 ExpletusSans Black 4ba792cf-26c4-4c3a-a194-4db5ae7e4be9
+Rosario White 6bd61758-576d-4895-9e73-3979f46a9b02
+Rosario Black 6bd61758-576d-4895-9e73-3979f46a9b03
 EOF
 fi
